@@ -179,6 +179,7 @@ const RAW: RawLead[] = [
 export const LEADS: Lead[] = RAW.map((row, i) => {
   const [name, phone, email, source, status, whatsapp_status, call_status, interest, , daysAgoVal, summaryKey, transcriptKey] = row
   const created = daysAgo(daysAgoVal, i % 8)
+  const followUpSent = whatsapp_status === 'replied' || whatsapp_status === 'handed_off'
   return {
     id: `lead-${String(i + 1).padStart(3, '0')}`,
     client_id: 'client-001',
@@ -192,6 +193,8 @@ export const LEADS: Lead[] = RAW.map((row, i) => {
     ai_summary: SUMMARIES[summaryKey] ?? SUMMARIES['new_sofa'],
     transcript: TRANSCRIPTS[transcriptKey] ?? TRANSCRIPTS['sofa_grey'],
     interest,
+    follow_up_sent: followUpSent,
+    follow_up_at: followUpSent ? daysAgo(daysAgoVal - 1, (i % 6) + 2) : undefined,
     created_at: created,
     updated_at: daysAgo(daysAgoVal - 1, i % 6),
   }

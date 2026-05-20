@@ -16,6 +16,8 @@ export interface Lead {
   ai_summary: string
   transcript: string
   interest: string
+  follow_up_sent: boolean
+  follow_up_at?: string
   created_at: string
   updated_at: string
 }
