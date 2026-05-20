@@ -4,6 +4,7 @@ import StatusBadge from '@/components/StatusBadge'
 import SourceBadge from '@/components/SourceBadge'
 import { LEADS, getWhatsappMetrics, getChatsPerDay, formatTimeAgo } from '@/lib/mock-data'
 import WhatsappLineChart from '@/components/WhatsappLineChart'
+import WhatsappConfigPanel from '@/components/WhatsappConfigPanel'
 
 export default function WhatsappReportPage() {
   const metrics = getWhatsappMetrics()
@@ -24,6 +25,8 @@ export default function WhatsappReportPage() {
     <>
       <TopBar title="WhatsApp Report" subtitle="AI conversation performance over the last 30 days" />
       <div className="p-6 space-y-6">
+
+        <WhatsappConfigPanel />
 
         {/* Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">

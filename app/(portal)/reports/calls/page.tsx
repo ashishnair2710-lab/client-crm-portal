@@ -4,6 +4,7 @@ import StatusBadge from '@/components/StatusBadge'
 import SourceBadge from '@/components/SourceBadge'
 import { LEADS, CALL_EVENTS, getCallMetrics, getCallsPerDay, formatTimeAgo } from '@/lib/mock-data'
 import CallsBarChart from '@/components/CallsBarChart'
+import VoiceConfigPanel from '@/components/VoiceConfigPanel'
 
 export default function CallsReportPage() {
   const metrics = getCallMetrics()
@@ -27,6 +28,8 @@ export default function CallsReportPage() {
     <>
       <TopBar title="Voice Calls Report" subtitle="AI voice call performance over the last 30 days" />
       <div className="p-6 space-y-6">
+
+        <VoiceConfigPanel />
 
         {/* Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
