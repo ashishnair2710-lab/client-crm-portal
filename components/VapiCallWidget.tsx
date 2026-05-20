@@ -65,7 +65,7 @@ export default function VapiCallWidget() {
   const [isMuted, setIsMuted] = useState(false)
   const [volume, setVolume] = useState(0)
   const [error, setError] = useState('')
-  const [showConfig, setShowConfig] = useState(true)
+  const [showConfig, setShowConfig] = useState(false)
   const vapiRef = useRef<any>(null)
   const transcriptEndRef = useRef<HTMLDivElement>(null)
 
@@ -167,8 +167,8 @@ export default function VapiCallWidget() {
             <svg className="w-4 h-4 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
             </svg>
-            <span className="text-sm font-semibold text-brand-black">VAPI Configuration</span>
-            {form.publicKey && <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Key saved</span>}
+            <span className="text-sm font-semibold text-brand-black">Call Engine Settings</span>
+            {form.publicKey && <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Configured</span>}
           </div>
           <svg className={`w-4 h-4 text-brand-muted transition-transform ${showConfig ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
@@ -179,28 +179,28 @@ export default function VapiCallWidget() {
           <div className="border-t border-brand-border px-5 py-4 space-y-4 bg-brand-gray/20">
             <div>
               <label className="block text-xs font-medium text-brand-subtext mb-1.5">
-                VAPI Public Key <span className="text-red-500">*</span>
+                Voice API Key <span className="text-red-500">*</span>
               </label>
               <input
                 type="password"
                 value={form.publicKey}
                 onChange={e => setForm(f => ({ ...f, publicKey: e.target.value }))}
-                placeholder="Enter your VAPI Public Key"
+                placeholder="Enter your Voice API Key"
                 className="w-full px-3 py-2 text-sm border border-brand-border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple"
               />
               <p className="text-xs text-brand-muted mt-1">
-                Get it from <span className="text-brand-purple font-medium">dashboard.vapi.ai → Account → API Keys</span>. Saved locally in your browser.
+                Provided by your system administrator. Saved locally in your browser.
               </p>
             </div>
             <div>
               <label className="block text-xs font-medium text-brand-subtext mb-1.5">
-                Assistant ID <span className="text-brand-muted font-normal">(optional — leave blank to use built-in prompt)</span>
+                Agent ID <span className="text-brand-muted font-normal">(optional — leave blank to use default agent)</span>
               </label>
               <input
                 type="text"
                 value={form.assistantId}
                 onChange={e => setForm(f => ({ ...f, assistantId: e.target.value }))}
-                placeholder="e.g. asst_xxxxxxxxxxxxxxxx"
+                placeholder="Leave blank to use default agent"
                 className="w-full px-3 py-2 text-sm border border-brand-border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple"
               />
             </div>

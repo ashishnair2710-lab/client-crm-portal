@@ -21,7 +21,7 @@ export default function DemoCallPage() {
                 Simulate a live AI voice call the way a real lead would experience it. Fill in dummy lead data, connect your VAPI key, and press <strong>Start Demo Call</strong> — the AI agent will speak through your browser using WebRTC (no phone needed).
               </p>
               <div className="flex flex-wrap gap-2 mt-3">
-                {['Browser mic + speakers', 'Live transcript', 'GPT-4o-mini agent', 'ElevenLabs voice'].map(tag => (
+                {['Browser mic + speakers', 'Live transcript', 'AI-powered agent', 'Natural voice'].map(tag => (
                   <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-brand-purple/10 text-brand-purple border border-brand-purple/20 font-medium">
                     {tag}
                   </span>
@@ -34,7 +34,7 @@ export default function DemoCallPage() {
         {/* How it works */}
         <div className="grid grid-cols-3 gap-3 mb-5">
           {[
-            { step: '1', title: 'Add VAPI key', desc: 'Paste your Public Key from dashboard.vapi.ai' },
+            { step: '1', title: 'Add API key', desc: 'Paste your AI voice API key to enable the call engine' },
             { step: '2', title: 'Fill lead data', desc: 'Choose a product and customer name for context' },
             { step: '3', title: 'Start call', desc: 'AI agent speaks back through your browser in real time' },
           ].map(s => (
