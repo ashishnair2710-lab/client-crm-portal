@@ -65,7 +65,7 @@ export default function Sidebar() {
           <div className="w-7 h-7 rounded-full bg-brand-gray flex items-center justify-center text-xs font-semibold text-brand-subtext">A</div>
           <div className="min-w-0 flex-1">
             <p className="text-xs font-medium text-brand-black truncate">Demo Account</p>
-            <p className="text-xs text-brand-muted truncate">demo@alhuzaifa.ae</p>
+            <p className="text-xs text-brand-muted truncate">demo@client.com</p>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const DEMO_EMAIL = 'demo@alhuzaifa.ae'
+const DEMO_EMAIL = 'demo@client.com'
 const DEMO_PASS  = 'demo123'
 
 export default function LoginPage() {
@@ -23,7 +23,7 @@ export default function LoginPage() {
       document.cookie = 'crm_session=demo; Max-Age=86400; path=/'
       router.push('/dashboard')
     } else {
-      setError('Invalid credentials. Use demo@alhuzaifa.ae / demo123')
+      setError('Invalid credentials. Use demo@client.com / demo123')
       setLoading(false)
     }
   }
@@ -39,7 +39,7 @@ export default function LoginPage() {
             </svg>
           </div>
           <h1 className="text-xl font-bold text-brand-black">Client Portal</h1>
-          <p className="text-sm text-brand-muted mt-1">Al Huzaifa Furniture — CRM Dashboard</p>
+          <p className="text-sm text-brand-muted mt-1">CRM Dashboard</p>
         </div>
 
         {/* Card */}
@@ -53,7 +53,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="demo@alhuzaifa.ae"
+                placeholder="demo@client.com"
                 required
                 className="w-full px-3 py-2.5 text-sm border border-brand-border rounded-lg bg-white text-brand-black placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
               />
@@ -98,7 +98,7 @@ export default function LoginPage() {
           {/* Demo hint */}
           <div className="mt-4 p-3 rounded-lg bg-brand-gray border border-brand-border">
             <p className="text-xs text-brand-muted font-medium mb-1">Demo credentials</p>
-            <p className="text-xs text-brand-subtext font-mono">demo@alhuzaifa.ae</p>
+            <p className="text-xs text-brand-subtext font-mono">demo@client.com</p>
             <p className="text-xs text-brand-subtext font-mono">demo123</p>
           </div>
         </div>
