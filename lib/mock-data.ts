@@ -258,8 +258,38 @@ export function getLeadsPerDay(days: number) {
       const d = new Date(l.created_at)
       return d.toDateString() === date.toDateString()
     }).length
-    return { date: label, leads: count || Math.floor(Math.random() * 3) }
+    return { date: label, leads: count }
   })
+}
+
+export function getPipelineBreakdown() {
+  return [
+    { stage: 'New',       count: LEADS.filter(l => l.status === 'new').length,       color: '#6B5FE4' },
+    { stage: 'Contacted', count: LEADS.filter(l => l.status === 'contacted').length, color: '#818CF8' },
+    { stage: 'Qualified', count: LEADS.filter(l => l.status === 'qualified').length, color: '#10B981' },
+    { stage: 'Cold',      count: LEADS.filter(l => l.status === 'cold').length,      color: '#D1D5DB' },
+  ]
+}
+
+export function getAdSpendByChannel() {
+  return [
+    { source: 'meta_ad', label: 'Meta Ads',  spend: 4200, leads: LEADS.filter(l => l.source === 'meta_ad').length,  color: '#1877F2' },
+    { source: 'google',  label: 'Google',    spend: 2800, leads: LEADS.filter(l => l.source === 'google').length,   color: '#EA4335' },
+    { source: 'tiktok',  label: 'TikTok',    spend: 1500, leads: LEADS.filter(l => l.source === 'tiktok').length,   color: '#000000' },
+    { source: 'website', label: 'Organic',   spend: 0,    leads: LEADS.filter(l => l.source === 'website').length,  color: '#10B981' },
+  ]
+}
+
+export function getLeadsBySource() {
+  const sources = ['meta_ad', 'google', 'tiktok', 'website'] as const
+  const labels: Record<string, string> = { meta_ad: 'Meta Ads', google: 'Google', tiktok: 'TikTok', website: 'Organic' }
+  const colors: Record<string, string> = { meta_ad: '#1877F2', google: '#EA4335', tiktok: '#6B5FE4', website: '#10B981' }
+  return sources.map(s => ({
+    source: s,
+    label: labels[s],
+    count: LEADS.filter(l => l.source === s).length,
+    color: colors[s],
+  }))
 }
 
 export function getWhatsappMetrics() {
