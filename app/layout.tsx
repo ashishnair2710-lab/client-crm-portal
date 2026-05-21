@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
 import './globals.css'
+import CLIENT_CONFIG from '@/lib/client-config'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -9,7 +10,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Client Portal — Forma Design Studio',
+  title: `Client Portal — ${CLIENT_CONFIG.name}`,
   description: 'CRM & Lead Management Dashboard',
 }
 

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import CLIENT_CONFIG from '@/lib/client-config'
 
 const NAV: { href: string; label: string; icon: React.ReactNode; badge?: string }[] = [
   { href: '/dashboard', label: 'Dashboard', icon: (
@@ -37,7 +38,7 @@ export default function Sidebar() {
         </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold text-brand-black truncate">Client Portal</p>
-          <p className="text-xs text-brand-muted truncate">Forma Design Studio</p>
+          <p className="text-xs text-brand-muted truncate">{CLIENT_CONFIG.name}</p>
         </div>
       </div>
 

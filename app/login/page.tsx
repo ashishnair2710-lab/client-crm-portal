@@ -1,9 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-
-const DEMO_EMAIL = 'demo@client.com'
-const DEMO_PASS  = 'demo123'
+import CLIENT_CONFIG from '@/lib/client-config'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -19,11 +17,11 @@ export default function LoginPage() {
 
     await new Promise(r => setTimeout(r, 700))
 
-    if (email === DEMO_EMAIL && password === DEMO_PASS) {
+    if (email === CLIENT_CONFIG.demoEmail && password === CLIENT_CONFIG.demoPassword) {
       document.cookie = 'crm_session=demo; Max-Age=86400; path=/'
       router.push('/dashboard')
     } else {
-      setError('Invalid credentials. Use demo@client.com / demo123')
+      setError(`Invalid credentials. Use ${CLIENT_CONFIG.demoEmail} / ${CLIENT_CONFIG.demoPassword}`)
       setLoading(false)
     }
   }
@@ -34,12 +32,10 @@ export default function LoginPage() {
         {/* Brand */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-purple shadow-glow mb-4">
-            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-            </svg>
+            <span className="text-lg font-bold text-white">{CLIENT_CONFIG.initials}</span>
           </div>
-          <h1 className="text-xl font-bold text-brand-black">Client Portal</h1>
-          <p className="text-sm text-brand-muted mt-1">CRM Dashboard</p>
+          <h1 className="text-xl font-bold text-brand-black">{CLIENT_CONFIG.name}</h1>
+          <p className="text-sm text-brand-muted mt-1">{CLIENT_CONFIG.industry} · Client Portal</p>
         </div>
 
         {/* Card */}
@@ -53,7 +49,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="demo@client.com"
+                placeholder={CLIENT_CONFIG.demoEmail}
                 required
                 className="w-full px-3 py-2.5 text-sm border border-brand-border rounded-lg bg-white text-brand-black placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
               />
@@ -98,13 +94,13 @@ export default function LoginPage() {
           {/* Demo hint */}
           <div className="mt-4 p-3 rounded-lg bg-brand-gray border border-brand-border">
             <p className="text-xs text-brand-muted font-medium mb-1">Demo credentials</p>
-            <p className="text-xs text-brand-subtext font-mono">demo@client.com</p>
-            <p className="text-xs text-brand-subtext font-mono">demo123</p>
+            <p className="text-xs text-brand-subtext font-mono">{CLIENT_CONFIG.demoEmail}</p>
+            <p className="text-xs text-brand-subtext font-mono">{CLIENT_CONFIG.demoPassword}</p>
           </div>
         </div>
 
         <p className="text-center text-xs text-brand-muted mt-6">
-          Powered by <span className="text-brand-purple font-medium">AI Lead Intelligence</span> · v2
+          Powered by <span className="text-brand-purple font-medium">AI Lead Intelligence</span>
         </p>
       </div>
     </div>
