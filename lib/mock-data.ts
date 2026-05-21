@@ -209,7 +209,7 @@ export const WHATSAPP_EVENTS: WhatsappEvent[] = LEADS.flatMap((lead, i) => {
   if (lead.whatsapp_status === 'no_reply') return []
   const base: WhatsappEvent[] = [
     { id: `wa-${lead.id}-1`, lead_id: lead.id, client_id: 'client-001', event_type: 'message_sent', created_at: lead.created_at },
-    { id: `wa-${lead.id}-2`, lead_id: lead.id, client_id: 'client-001', event_type: 'bot_replied', created_at: daysAgo(Number(lead.created_at) + 0.01) },
+    { id: `wa-${lead.id}-2`, lead_id: lead.id, client_id: 'client-001', event_type: 'bot_replied', created_at: lead.updated_at },
   ]
   if (lead.whatsapp_status === 'replied' || lead.whatsapp_status === 'handed_off') {
     base.push({ id: `wa-${lead.id}-3`, lead_id: lead.id, client_id: 'client-001', event_type: 'message_received', created_at: daysAgo(0, i % 12) })
