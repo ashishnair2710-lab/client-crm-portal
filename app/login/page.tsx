@@ -104,7 +104,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-brand-muted mt-6">
-          Powered by <span className="text-brand-purple font-medium">AI Lead Intelligence</span>
+          Powered by <span className="text-brand-purple font-medium">AI Lead Intelligence</span> · v2
         </p>
       </div>
     </div>
