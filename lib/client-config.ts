@@ -24,6 +24,18 @@ const CLIENT_CONFIG = {
   demoEmail:    'demo@client.com',
   demoPassword: 'demo123',
 
+  // ── Lead Routing ──────────────────────────────────────────
+  routing: {
+    callHours:  { start: 9, end: 18, timezone: 'Asia/Dubai' },  // 9 AM – 6 PM
+    afterHoursFallback: 'whatsapp' as 'whatsapp' | 'queue',     // outside hours: WhatsApp holding msg or queue
+    rules: {
+      meta_ad: 'whatsapp',   // Meta leads → WhatsApp via WhatChimp
+      google:  'voice',      // Google leads → VAPI voice call
+      website: 'voice',      // Website form → VAPI voice call
+      tiktok:  'whatsapp',   // TikTok leads → WhatsApp
+    } as Record<string, 'voice' | 'whatsapp'>,
+  },
+
   // ── AI Voice Agent (Demo Call page) ──────────────────────
   agent: {
     name:        'Forma Design Consultant',
