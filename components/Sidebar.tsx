@@ -37,7 +37,7 @@ export default function Sidebar() {
         </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold text-brand-black truncate">Client Portal</p>
-          <p className="text-xs text-brand-muted truncate">Al Huzaifa Furniture</p>
+          <p className="text-xs text-brand-muted truncate">Forma Design Studio</p>
         </div>
       </div>
 

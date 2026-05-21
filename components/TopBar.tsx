@@ -30,9 +30,9 @@ export default function TopBar({ title, subtitle }: TopBarProps) {
         {/* Client name */}
         <div className="hidden md:flex items-center gap-2 text-sm text-brand-subtext">
           <div className="w-6 h-6 rounded bg-brand-purple/10 flex items-center justify-center">
-            <span className="text-xs font-bold text-brand-purple">A</span>
+            <span className="text-xs font-bold text-brand-purple">F</span>
           </div>
-          <span className="font-medium">Al Huzaifa Furniture</span>
+          <span className="font-medium">Forma Design Studio</span>
         </div>
 
         <div className="h-4 w-px bg-brand-border hidden md:block" />

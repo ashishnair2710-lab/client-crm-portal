@@ -9,7 +9,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Client Portal — Al Huzaifa Furniture',
+  title: 'Client Portal — Forma Design Studio',
   description: 'CRM & Lead Management Dashboard',
 }
 

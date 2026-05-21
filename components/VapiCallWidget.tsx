@@ -18,44 +18,50 @@ interface FormData {
   assistantId: string
 }
 
-const PRODUCTS = [
-  'L-shaped corner sofa in grey (AED 3,200)',
-  'L-shaped corner sofa with chaise (AED 5,200)',
-  '3+2 Sofa Set in beige (AED 4,200)',
-  '3+2 Sofa Set in grey velvet (AED 4,600)',
-  'King Bedroom Set — walnut (AED 7,200)',
-  'King Bedroom Set — white lacquer (AED 6,800)',
-  '8-seater Walnut Dining Table (AED 5,400)',
-  '6-seater Marble Dining Set (AED 4,800)',
-  'Sliding Wardrobe 3-door mirror (AED 3,800)',
-  'Oak TV Unit & Media Console (AED 2,100)',
+const SERVICES = [
+  'Full Villa Interior Design — 4–5BR (AED 40,000+)',
+  'Full Apartment Design — 2BR (AED 18,000)',
+  'Full Apartment Design — 1BR (AED 12,000)',
+  'Living Room Makeover (AED 8,500)',
+  'Master Bedroom Redesign (AED 7,500)',
+  'Kitchen & Dining Open Plan Redesign (AED 12,000)',
+  'Home Office Design Package (AED 5,500)',
+  'Commercial Office Design (AED 30,000+)',
+  'Space Planning Consultation (AED 3,500)',
+  'Colour & Materials Consultation (AED 1,500)',
 ]
 
-const LOCATIONS = ['Dubai — JVC', 'Dubai — Marina', 'Dubai — Downtown', 'Dubai — Mirdif', 'Sharjah', 'Abu Dhabi', 'Ajman']
+const LOCATIONS = ['Dubai — Downtown', 'Dubai — Palm Jumeirah', 'Dubai — JVC', 'Dubai — Marina', 'Dubai — Business Bay', 'Dubai — Arabian Ranches', 'Sharjah', 'Abu Dhabi', 'Ajman']
 
 function buildSystemPrompt(form: FormData): string {
-  return `You are a warm, professional AI sales agent for Al Huzaifa Furniture — a premium furniture store in the UAE with showrooms in Dubai and Sharjah.
+  return `You are a warm, professional AI design consultant for Forma Design Studio — a bespoke interior design studio in the UAE with projects across Dubai, Abu Dhabi, and Sharjah.
 
-You are currently on a call with ${form.name || 'a customer'}, who is interested in: ${form.interest || 'furniture'}.
+You are currently on a call with ${form.name || 'a client'}, who is enquiring about: ${form.interest || 'interior design services'}.
 Their location: ${form.location || 'UAE'}.
 
 Your goals for this call:
-1. Greet them warmly and confirm their interest
-2. Provide accurate pricing and product details
-3. Confirm free delivery to their emirate (3–5 business days)
-4. Mention the 0% installment option (3, 6, or 12 months via UAE bank cards)
-5. Ask about preferred delivery slot
-6. Offer to send a WhatsApp confirmation
-7. Close warmly — thank them and set next steps
+1. Greet them warmly and confirm what they're looking for
+2. Ask 1–2 qualifying questions about their space (size, style preferences, timeline)
+3. Recommend the most suitable service package with pricing
+4. Mention that all projects include a complimentary initial consultation and 3D visualisations
+5. Explain the typical project timeline (6–10 weeks from concept to completion)
+6. Offer to send our portfolio and book a discovery call with a lead designer
+7. Close warmly — confirm next steps
 
-Keep responses concise and conversational. Speak in English. Be helpful, not pushy.`
+Key facts:
+- Services range from AED 1,500 (consultation) to AED 55,000+ (full villa)
+- All packages include concept design, 3D renders, material selection, and project management
+- We work across residential and commercial spaces
+- Styles we specialise in: modern Arabic, Japandi, contemporary luxury, minimalist
+
+Keep responses concise and conversational. Speak in English. Be helpful and consultative, not pushy.`
 }
 
 export default function VapiCallWidget() {
   const [form, setForm] = useState<FormData>({
     name: 'Ahmed Al Rashidi',
     phone: '+971 50 123 4567',
-    interest: PRODUCTS[0],
+    interest: SERVICES[0],
     location: LOCATIONS[0],
     publicKey: '',
     assistantId: '',
@@ -113,7 +119,7 @@ export default function VapiCallWidget() {
         ? form.assistantId.trim()
         : {
             name: 'Al Huzaifa Furniture Agent',
-            firstMessage: `Hello ${form.name || 'there'}! Thank you for your interest in Al Huzaifa Furniture. I see you're looking at our ${form.interest.split('(')[0].trim()}. How can I help you today?`,
+            firstMessage: `Hello ${form.name || 'there'}! Thanks for reaching out to Forma Design Studio. I see you're interested in our ${form.interest.split('(')[0].trim()}. I'd love to learn more about your project — could you tell me a little about the space you're looking to transform?`,
             transcriber: { provider: 'deepgram', model: 'nova-2', language: 'en-US' },
             model: {
               provider: 'openai',
@@ -233,14 +239,14 @@ export default function VapiCallWidget() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-brand-subtext mb-1.5">Product Interest</label>
+            <label className="block text-xs font-medium text-brand-subtext mb-1.5">Service Interest</label>
             <select
               value={form.interest}
               onChange={e => setForm(f => ({ ...f, interest: e.target.value }))}
               disabled={isLive || isConnecting}
               className="w-full px-3 py-2 text-sm border border-brand-border rounded-lg bg-white disabled:bg-brand-gray focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple"
             >
-              {PRODUCTS.map(p => <option key={p} value={p}>{p}</option>)}
+              {SERVICES.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
           </div>
           <div>

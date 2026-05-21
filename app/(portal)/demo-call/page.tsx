@@ -18,7 +18,7 @@ export default function DemoCallPage() {
             <div className="flex-1">
               <h2 className="text-sm font-semibold text-brand-black mb-1">AI Voice Call Demo</h2>
               <p className="text-xs text-brand-muted leading-relaxed">
-                Simulate a live AI voice call the way a real lead would experience it. Fill in dummy lead data, connect your VAPI key, and press <strong>Start Demo Call</strong> — the AI agent will speak through your browser using WebRTC (no phone needed).
+                Simulate a live AI design consultation the way a real lead would experience it. Fill in dummy client data, connect your API key, and press <strong>Start Demo Call</strong> — the AI design consultant will speak through your browser using WebRTC (no phone needed).
               </p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {['Browser mic + speakers', 'Live transcript', 'AI-powered agent', 'Natural voice'].map(tag => (
