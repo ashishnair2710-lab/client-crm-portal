@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import CLIENT_CONFIG from '@/lib/client-config'
 
 export default function LoginPage() {
@@ -30,12 +31,9 @@ export default function LoginPage() {
     <div className="min-h-screen bg-brand-gray flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         {/* Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-purple shadow-glow mb-4">
-            <span className="text-lg font-bold text-white">{CLIENT_CONFIG.initials}</span>
-          </div>
-          <h1 className="text-xl font-bold text-brand-black">{CLIENT_CONFIG.name}</h1>
-          <p className="text-sm text-brand-muted mt-1">{CLIENT_CONFIG.industry} · Client Portal</p>
+        <div className="flex flex-col items-center mb-8">
+          <Image src="/logo.png" alt="AdRevUp" width={180} height={50} style={{ objectFit: 'contain' }} priority />
+          <p className="text-sm text-brand-muted mt-3">{CLIENT_CONFIG.industry} · Client Portal</p>
         </div>
 
         {/* Card */}

@@ -1,5 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import CLIENT_CONFIG from '@/lib/client-config'
 
 interface TopBarProps {
@@ -29,11 +30,8 @@ export default function TopBar({ title, subtitle }: TopBarProps) {
         </span>
 
         {/* Client name */}
-        <div className="hidden md:flex items-center gap-2 text-sm text-brand-subtext">
-          <div className="w-6 h-6 rounded bg-brand-purple/10 flex items-center justify-center">
-            <span className="text-xs font-bold text-brand-purple">{CLIENT_CONFIG.initials}</span>
-          </div>
-          <span className="font-medium">{CLIENT_CONFIG.name}</span>
+        <div className="hidden md:flex items-center">
+          <Image src="/logo.png" alt="AdRevUp" width={100} height={28} style={{ objectFit: 'contain' }} />
         </div>
 
         <div className="h-4 w-px bg-brand-border hidden md:block" />
