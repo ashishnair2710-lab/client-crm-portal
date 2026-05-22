@@ -1,5 +1,4 @@
-# Client CRM Portal — Al Huzaifa Furniture
-
+# Client CRM Portal 
 A white-label client portal demonstrating how leads are captured, followed up via WhatsApp, called via AI voice, and summarised by Claude AI.
 
 Built with **Next.js 14 App Router**, **Supabase**, **Tailwind CSS**, and **Recharts**.
