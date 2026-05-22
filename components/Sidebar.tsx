@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import CLIENT_CONFIG from '@/lib/client-config'
 
@@ -30,16 +31,8 @@ export default function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 w-60 bg-white border-r border-brand-border flex flex-col z-20">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-5 py-5 border-b border-brand-border">
-        <div className="w-8 h-8 rounded-lg bg-brand-purple flex items-center justify-center flex-shrink-0">
-          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-          </svg>
-        </div>
-        <div className="min-w-0">
-          <p className="text-sm font-semibold text-brand-black truncate">Client Portal</p>
-          <p className="text-xs text-brand-muted truncate">{CLIENT_CONFIG.name}</p>
-        </div>
+      <div className="flex items-center px-5 py-4 border-b border-brand-border">
+        <Image src="/logo.png" alt="AdRevUp" width={140} height={40} style={{ objectFit: 'contain' }} priority />
       </div>
 
       {/* Nav */}

@@ -15,10 +15,10 @@
 const CLIENT_CONFIG = {
 
   // ── Identity ──────────────────────────────────────────────
-  name:       'Forma Design Studio',   // shown in sidebar, topbar, login, page title
-  initials:   'F',                     // avatar letter in sidebar + topbar
-  industry:   'Interior Design',       // shown as subtitle on login page
-  website:    'formadesign.ae',        // not rendered yet — for future use
+  name:       'AdRevUp',               // shown in sidebar, topbar, login, page title
+  initials:   'A',                     // avatar letter in sidebar + topbar
+  industry:   'Performance Marketing', // shown as subtitle on login page
+  website:    'adrevup.com',           // not rendered yet — for future use
 
   // ── Demo login credentials ────────────────────────────────
   demoEmail:    'demo@client.com',
